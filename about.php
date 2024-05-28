@@ -70,7 +70,7 @@
     <?php include 'includes/scripts.php'; ?>
 
     <script type="module">
-        import config from 'config.js';
+        import config from './config.js';
 
         async function fetchImage(query, imgId) {
             const accessKey = config.UNSPLASH_ACCESS_KEY;
