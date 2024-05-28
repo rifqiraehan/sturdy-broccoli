@@ -4,13 +4,6 @@
     header('location: cart_view.php');
   }
 
-  if(isset($_SESSION['captcha'])){
-    $now = time();
-    if($now >= $_SESSION['captcha']){
-      unset($_SESSION['captcha']);
-    }
-  }
-
 ?>
 <?php include 'includes/header.php'; ?>
 <body class="hold-transition register-page">
@@ -19,7 +12,7 @@
       if(isset($_SESSION['error'])){
         echo "
           <div class='callout callout-danger text-center'>
-            <p>".$_SESSION['error']."</p> 
+            <p>".$_SESSION['error']."</p>
           </div>
         ";
         unset($_SESSION['error']);
@@ -28,7 +21,7 @@
       if(isset($_SESSION['success'])){
         echo "
           <div class='callout callout-success text-center'>
-            <p>".$_SESSION['success']."</p> 
+            <p>".$_SESSION['success']."</p>
           </div>
         ";
         unset($_SESSION['success']);
@@ -58,15 +51,6 @@
             <input type="password" class="form-control" name="repassword" placeholder="Retype password" required>
             <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
           </div>
-          <?php
-            if(!isset($_SESSION['captcha'])){
-              echo '
-                <di class="form-group" style="width:100%;">
-                  <div class="g-recaptcha" data-sitekey="6LevO1IUAAAAAFX5PpmtEoCxwae-I8cCQrbhTfM6"></div>
-                </di>
-              ';
-            }
-          ?>
           <hr>
       		<div class="row">
     			<div class="col-xs-4">
@@ -79,7 +63,7 @@
       <a href="index.php"><i class="fa fa-home"></i> Home</a>
   	</div>
 </div>
-	
+
 <?php include 'includes/scripts.php' ?>
 </body>
 </html>
