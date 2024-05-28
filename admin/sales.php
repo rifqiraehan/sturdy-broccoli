@@ -43,7 +43,7 @@
                   <th class="hidden"></th>
                   <th>Date</th>
                   <th>Buyer Name</th>
-                  <th>Transaction#</th>
+                  <th>Payment Proof</th>
                   <th>Amount</th>
                   <th>Full Details</th>
                 </thead>
@@ -67,7 +67,7 @@
                             <td class='hidden'></td>
                             <td>".date('M d, Y', strtotime($row['sales_date']))."</td>
                             <td>".$row['firstname'].' '.$row['lastname']."</td>
-                            <td>".$row['pay_id']."</td>
+                            <td><img src='../" . $row['payment_proof'] . "' alt='Payment Proof' style='max-width: 100px; max-height: 100px;'></td>
                             <td>Rp ".number_format($total, 2)."</td>
                             <td><button type='button' class='btn btn-info btn-sm btn-flat transact' data-id='".$row['salesid']."'><i class='fa fa-search'></i> View</button></td>
                           </tr>
@@ -87,7 +87,7 @@
         </div>
       </div>
     </section>
-     
+
   </div>
   	<?php include 'includes/footer.php'; ?>
     <?php include '../includes/profile_modal.php'; ?>
@@ -136,7 +136,7 @@ $(function(){
       $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
     }
   )
-  
+
 });
 </script>
 <script>

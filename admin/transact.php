@@ -12,7 +12,7 @@
 
 	$total = 0;
 	foreach($stmt as $row){
-		$output['transaction'] = $row['pay_id'];
+		$output['transaction'] = $row['payment_proof'];
 		$output['date'] = date('M d, Y', strtotime($row['sales_date']));
 		$subtotal = $row['price']*$row['quantity'];
 		$total += $subtotal;
@@ -25,7 +25,7 @@
 			</tr>
 		";
 	}
-	
+
 	$output['total'] = '<b>Rp '.number_format($total, 2).'<b>';
 	$pdo->close();
 	echo json_encode($output);

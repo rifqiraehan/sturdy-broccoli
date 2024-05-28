@@ -3,58 +3,68 @@
 <body class="hold-transition skin-blue layout-top-nav">
 <div class="wrapper">
 
-    <?php include 'includes/navbar.php'; ?>
-     
-      <div class="content-wrapper">
-        <div class="container">
+<?php include 'includes/navbar.php'; ?>
 
-          <!-- Main content -->
-          <section class="content">
+<div class="content-wrapper">
+    <div class="container">
+
+        <!-- Main content -->
+        <section class="content">
             <div class="row">
                 <div class="col-sm-9">
                     <h1 class="page-header">YOUR CART</h1>
                     <div class="box box-solid">
                         <div class="box-body">
-                        <table class="table table-bordered">
-                            <thead>
-                                <th></th>
-                                <th>Photo</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th width="20%">Quantity</th>
-                                <th>Subtotal</th>
-                            </thead>
-                            <tbody id="tbody">
-                            </tbody>
-                        </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th></th>
+                                    <th>Photo</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th width="20%">Quantity</th>
+                                    <th>Subtotal</th>
+                                </thead>
+                                <tbody id="tbody">
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div>
-                        <h4>Upload your payment proof:</h4>
-                        <form action="upload_payment.php" method="post" enctype="multipart/form-data">
-                            <input type="file" name="payment_proof" id="payment_proof" required>
-                            <button type="submit" class="btn btn-primary">Upload Payment Proof</button>
-                        </form>
-                    </div>
-                    <div>
                         <?php
-                            if(isset($_SESSION['user'])){
-                                echo "<button class='btn btn-success' id='checkout_button'>Checkout</button>";
+                            if(isset($_SESSION['success'])){
+                                echo "
+                                    <div class='alert alert-success'>
+                                        <p>".$_SESSION['success']."</p>
+                                    </div>
+                                ";
+                                unset($_SESSION['success']);
                             }
-                            else{
-                                echo "<h4>You need to <a href='login.php'>Login</a> to checkout.</h4>";
+
+                            if(isset($_SESSION['error'])){
+                                echo "
+                                    <div class='alert alert-danger'>
+                                        <p>".$_SESSION['error']."</p>
+                                    </div>
+                                ";
+                                unset($_SESSION['error']);
                             }
                         ?>
                     </div>
+                    <div>
+                        <h4>Checkout and upload your payment proof:</h4>
+                        <form action="sales.php" method="post" enctype="multipart/form-data">
+                            <input type="file" name="payment_proof" id="payment_proof" required>
+                            <button type="submit" name="checkout" class="btn btn-success" style="margin-top: 3rem;">Checkout</button>
+                        </form>
+                    </div>
                 </div>
-                
             </div>
-          </section>
-         
-        </div>
-      </div>
-    <?php $pdo->close(); ?>
-    <?php include 'includes/footer.php'; ?>
+        </section>
+
+    </div>
+</div>
+<?php $pdo->close(); ?>
+<?php include 'includes/footer.php'; ?>
 </div>
 
 <?php include 'includes/scripts.php'; ?>

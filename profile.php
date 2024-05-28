@@ -9,7 +9,7 @@
 <div class="wrapper">
 
 	<?php include 'includes/navbar.php'; ?>
-	 
+
 	  <div class="content-wrapper">
 	    <div class="container">
 
@@ -74,7 +74,7 @@
 	        					<thead>
 	        						<th class="hidden"></th>
 	        						<th>Date</th>
-	        						<th>Transaction#</th>
+	        						<th>Payment Proof</th>
 	        						<th>Amount</th>
 	        						<th>Full Details</th>
 	        					</thead>
@@ -97,7 +97,7 @@
 	        									<tr>
 	        										<td class='hidden'></td>
 	        										<td>".date('M d, Y', strtotime($row['sales_date']))."</td>
-	        										<td>".$row['pay_id']."</td>
+	        										<td><img src='" . $row['payment_proof'] . "' alt='Payment Proof' style='max-width: 100px; max-height: 100px;'></td>
 	        										<td>Rp ".number_format($total, 2)."</td>
 	        										<td><button class='btn btn-sm btn-flat btn-info transact' data-id='".$row['id']."'><i class='fa fa-search'></i> View</button></td>
 	        									</tr>
@@ -116,13 +116,13 @@
 	        			</div>
 	        		</div>
 	        	</div>
-	        	
+
 	        </div>
 	      </section>
-	     
+
 	    </div>
 	  </div>
-  
+
   	<?php include 'includes/footer.php'; ?>
   	<?php include 'includes/profile_modal.php'; ?>
 </div>

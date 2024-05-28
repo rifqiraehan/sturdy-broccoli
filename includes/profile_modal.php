@@ -10,7 +10,6 @@
             <div class="modal-body">
               <p>
                 Date: <span id="date"></span>
-                <span class="pull-right">Transaction#: <span id="transid"></span></span> 
               </p>
               <table class="table table-bordered">
                 <thead>
@@ -95,7 +94,7 @@
                     </div>
                 </div>
                 <hr>
-                
+
                 <div class="form-group">
                     <label for="curr_password" class="col-sm-3 control-label">Current Password</label>
 
