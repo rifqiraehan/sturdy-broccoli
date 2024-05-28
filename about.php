@@ -69,7 +69,9 @@
 
     <?php include 'includes/scripts.php'; ?>
 
-    <script>
+    <script type="module">
+        import config from 'config.js';
+
         async function fetchImage(query, imgId) {
             const accessKey = config.UNSPLASH_ACCESS_KEY;
             const url = `https://api.unsplash.com/photos/random?query=${query}&client_id=${accessKey}`;
